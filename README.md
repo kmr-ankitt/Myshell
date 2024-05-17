@@ -1,6 +1,7 @@
 # Myshell
 
 Myshell is a minimal shell for unix systems (made just for fun).
+This can perform any linux opertions.
 
 ## Installation
 
