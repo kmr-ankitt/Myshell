@@ -26,6 +26,15 @@ go build src/main.go
 ./main
 ```
 
+## Example
+
+
+This is one example of Myshell
+
+
+![Screenshot from 2024-05-17 12-03-48](https://github.com/kmr-ankitt/Myshell/assets/90329779/b4592e3f-5b6d-4184-ab96-ff2d674c2caa)
+
+
 
 
 
