@@ -11,7 +11,7 @@ import (
   "os"
   "os/exec"
   "bufio"
-  // "errors"
+  "errors"
   "strings"
 )
 
@@ -20,8 +20,26 @@ func execInput(input string) error{
   // Removing the newline character at the end of line 
   input = strings.TrimSuffix(input , "\n")
 
+  // Split the input to separate the command and the arguments 
+  args := strings.Split(input, " ")
+
+  switch args[0]{
+    case "cd":
+      
+      // 'cd' with no home dir is not supported
+      if len(args) < 2{
+        return errors.New("path required")
+      }
+      
+      // Change the directory and return the error
+      return os.Chdir(args[1])
+    
+    case "exit":
+      os.Exit(0)
+  }
+
   // Prepare the command to execute
-  cmd := exec.Command(input)
+  cmd := exec.Command(args[0], args[1:]...)
 
   cmd.Stderr = os.Stderr
   cmd.Stdout = os.Stdout
@@ -48,5 +66,7 @@ func main(){
     if err = execInput(input); err != nil{
       fmt.Fprintln(os.Stderr , err)
     }
+
+    fmt.Println(" ")
   }
 }
