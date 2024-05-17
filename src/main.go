@@ -3,7 +3,6 @@
 " UNIX is very simple, it just needs a genius to understand its simplicity. " - Dennis Ritchie 
 
 */
-
 package main 
 
 import (
@@ -13,6 +12,9 @@ import (
   "bufio"
   "errors"
   "strings"
+  "path/filepath"
+ 
+  "github.com/fatih/color"
 )
 
 func execInput(input string) error{
@@ -48,13 +50,29 @@ func execInput(input string) error{
   return cmd.Run()
 }
 
+func hostName() (string) {
+    host, err1 := os.Hostname()
+    if err1 != nil {
+        return ""
+    }
+
+    user, err2 := os.Getwd()
+    if err2 != nil {
+        return ""
+    }
+
+    name := host + ">> " + filepath.Base(user)
+    return name
+}
+
 func main(){
    
   reader := bufio.NewReader(os.Stdin)
   
   for{
-    
-    fmt.Print("> ")
+
+    // This adds color to the output buffer
+    color.New(color.FgRed).Printf("%s> ", hostName())
 
     // Read the keyboard input here. 
     input, err := reader.ReadString('\n')
