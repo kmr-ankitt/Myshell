@@ -1,11 +1,15 @@
 # Myshell
 
-Myshell is a minimal shell for unix systems (made just for fun).
+Myshell is a minimal shell for Linux systems (made just for fun).
 This can perform any linux opertions.
 
 ## Prerequisite
 
 - **Go** must be installed in your system.
+
+## Why
+
+Just wanted to learn something new.
 
 ## Installation
 
